@@ -30,7 +30,7 @@ const App = () => {
     <View style={styles.screen}>
       <BannerAd
       unitId={TestIds.BANNER}
-      size={BannerAdSize.WIDE_SKYSCRAPER}
+      size={BannerAdSize.ADAPTIVE_BANNER}
       requestOptions={{
         requestNonPersonalizedAdsOnly: true,
       }}
