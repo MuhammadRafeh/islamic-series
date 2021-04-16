@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "874793458039",
-    "project_id": "islamic-series",
-    "storage_bucket": "islamic-series.appspot.com"
+    "project_number": "718923625219",
+    "project_id": "islamic-series-d79e7",
+    "storage_bucket": "islamic-series-d79e7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:874793458039:android:280ded168cc2ab721ae972",
+        "mobilesdk_app_id": "1:718923625219:android:5929b736de61ba764cef36",
         "android_client_info": {
           "package_name": "com.islamicseries"
         }
       },
       "oauth_client": [
         {
-          "client_id": "874793458039-g7p2vd8qbocnnb51llj1qre995qdhush.apps.googleusercontent.com",
+          "client_id": "718923625219-4jjm3msqj3799oe3ffhrn8urk2jqqsuv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDK_UtfyjpJ7NyfYldplquJ5XDeM45zm-w"
+          "current_key": "AIzaSyA8v1y4H55NSpiJQto2bOgEh1Rik_bJSRE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "874793458039-g7p2vd8qbocnnb51llj1qre995qdhush.apps.googleusercontent.com",
+              "client_id": "718923625219-4jjm3msqj3799oe3ffhrn8urk2jqqsuv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
