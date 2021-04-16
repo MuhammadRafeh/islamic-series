@@ -4,11 +4,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import admob, { MaxAdContentRating, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize  } from '@react-native-firebase/admob';
+import admob, { MaxAdContentRating, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize } from '@react-native-firebase/admob';  
 
 const App = () => {
   useEffect(() => {
-
     admob()
       .setRequestConfiguration({
         // Update all future requests suitable for parental guidance
@@ -24,17 +23,16 @@ const App = () => {
       .then(() => {
         // Request config successfully set!
       });
-
   }, [])
   return (
     <View style={styles.screen}>
       <BannerAd
-      unitId={TestIds.BANNER}
-      size={BannerAdSize.ADAPTIVE_BANNER}
-      requestOptions={{
-        requestNonPersonalizedAdsOnly: true,
-      }}
-    />
+        unitId={TestIds.BANNER}
+        size={BannerAdSize.ADAPTIVE_BANNER}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+      />
       <Text>Hello World</Text>
     </View>
   )
