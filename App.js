@@ -10,6 +10,8 @@ import {
   Animated,
   Platform,
   Button,
+  ActivityIndicator,
+  Alert
 } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import Genres from './Genres';
@@ -23,8 +25,11 @@ const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const BACKDROP_HEIGHT = height * 0.65;
 
 const Loading = () => (
+  // <View style={styles.loadingContainer}>
+  //   <Text style={styles.paragraph}>Loading...</Text>
+  // </View>
   <View style={styles.loadingContainer}>
-    <Text style={styles.paragraph}>Loading...</Text>
+    <ActivityIndicator size='large' color='white' />
   </View>
 );
 
@@ -84,17 +89,39 @@ const Backdrop = ({ movies, scrollX }) => {
 
 export default function App() {
   const [movies, setMovies] = React.useState([]);
+  const [error, setError] = React.useState();
   const scrollX = React.useRef(new Animated.Value(0)).current;
   React.useEffect(() => {
     const fetchData = async () => {
-      const movies = await getSeries();
-      setMovies([{ key: 'empty-left' }, ...movies, { key: 'empty-right' }]);
+      try {
+        const movies = await getSeries();
+        setMovies([{ key: 'empty-left' }, ...movies, { key: 'empty-right' }]);
+      } catch (err) {
+        setError(err.message);
+      }
     };
 
-    if (movies.length === 0) {
-      fetchData(movies);
+    fetchData(movies);
+  }, []);
+
+  React.useEffect(() => {
+    if (error) {
+      setError(null)
+      Alert.alert('Something went wrong', 'Please check your internet connection', [{
+        text: 'Try again', 
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            const movies = await getSeries();
+            setMovies([{ key: 'empty-left' }, ...movies, { key: 'empty-right' }]);
+            setError(null);
+          } catch (err) {
+            setError(err.message);
+          }
+        }
+      }])
     }
-  }, [movies]);
+  }, [error])
 
   if (movies.length === 0) {
     return <Loading />;
@@ -162,7 +189,7 @@ export default function App() {
                 <Text style={{ fontSize: 12, marginBottom: 5 }} numberOfLines={3}>
                   {item.description}
                 </Text>
-                <Button title="WATCH NOW" onPress={() => {console.log('asd')}}/>
+                <Button title="WATCH NOW" onPress={() => { console.log('asd') }} />
               </Animated.View>
             </View>
           );
@@ -178,6 +205,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'black'
   },
   container: {
     flex: 1,
