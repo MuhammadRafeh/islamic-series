@@ -23,35 +23,38 @@ const jsCode = `
   `;
 
   //The great saljhuk
-  // episode 1 2188262094639710
-  // episode 2 109296617761719
-  // episode 3 111878720836842
-  // episode 4 145536813962375
-  // episode 5 210764103812507
-  // episode 6 212632726958978
-  // episode 7 214920950063489
-  // episode 8 216610516561199
-  // episode 9 221958982693019
-  // episode 10 226672985554952
-  // episode 11 231905868364997
-  // episode 12 236915077864076
-  // episode 13 197451365358318
-  // episode 14 201796761590445
-  // episode 15 206485954454859
-  // episode 16 259898562232394
-  // episode 17 265421855013398
-  // episode 18 220089243094530
-  // episode 19 224571342646320
-  // episode 20 229188968851224
-  // episode 21 283711949851055
-  // episode 22 239135201189934
-  // episode 23 243687247401396
-  // episode 24 130832372253162
-  // episode 25 253501969753257
-  // episode 26 263266798776774
-  // episode 27 316146903274226
-  // episode 28 
+  const greatSaljhuk = {"Episode 1": "2188262094639710",
+  "Episode 2": "109296617761719",
+  "Episode 3": "111878720836842",
+  "Episode 4": "145536813962375",
+  "Episode 5": "210764103812507",
+  "Episode 6": "212632726958978",
+  "Episode 7": "214920950063489",
+  "Episode 8": "216610516561199",
+  "Episode 9": "221958982693019",
+  "Episode 10": "226672985554952",
+  "Episode 11": "231905868364997",
+  "Episode 12": "236915077864076",
+  "Episode 13": "197451365358318",
+  "Episode 14": "201796761590445",
+  "Episode 15": "206485954454859",
+  "Episode 16": "259898562232394",
+  "Episode 17": "265421855013398",
+  "Episode 18": "220089243094530",
+  "Episode 19": "224571342646320",
+  "Episode 20": "229188968851224",
+  "Episode 21": "283711949851055",
+  "Episode 22": "239135201189934",
+  "Episode 23": "243687247401396",
+  "Episode 24": "130832372253162",
+  "Episode 25": "253501969753257",
+  "Episode 26": "263266798776774",
+  "Episode 27": "316146903274226"}
+  // Episode 28 
 
+  // The great seljhuk group
+  //https://www.facebook.com/The-great-saljuk-102456185111715
+  
 //   The great saljuk all episodes Facebook links
 // Episode 1 
 // https://m.facebook.com/groups/3739709416119511/permalink/3739763179447468/
@@ -107,3 +110,11 @@ const jsCode = `
 // https://www.facebook.com/groups/333825854567625/permalink/457480418868834/
 // Episode 27
 // https://www.facebook.com/groups/333825854567625/permalink/461455295138013/
+
+
+// KURULUS USMAN
+//URDU DUB Youtube
+// season 1 
+// Episode 1 944LN-hB5tA
+// Episode 2 mOuiucnv6vc
+// Episode 3 RyU2TYqfono
