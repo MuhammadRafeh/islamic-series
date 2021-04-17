@@ -11,13 +11,16 @@ import {
   Platform,
   Button,
   ActivityIndicator,
-  Alert
+  Alert,
+  TouchableOpacity
 } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import Genres from './Genres';
 import Rating from './Rating';
 import LinearGradient from 'react-native-linear-gradient';
 import { getSeries } from './api';
+import admob, { MaxAdContentRating, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize } from '@react-native-firebase/admob';
+
 
 const SPACING = 10;
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
@@ -100,15 +103,30 @@ export default function App() {
         setError(err.message);
       }
     };
+    fetchData();
+    // ADMOB
+    admob()
+      .setRequestConfiguration({
+        // Update all future requests suitable for parental guidance
+        maxAdContentRating: MaxAdContentRating.PG,
 
-    fetchData(movies);
+        // Indicates that you want your content treated as child-directed for purposes of COPPA.
+        tagForChildDirectedTreatment: true,
+
+        // Indicates that you want the ad request to be handled in a
+        // manner suitable for users under the age of consent.
+        tagForUnderAgeOfConsent: true,
+      })
+      .then(() => {
+        // Request config successfully set!
+      });
   }, []);
 
   React.useEffect(() => {
     if (error) {
       setError(null)
       Alert.alert('Something went wrong', 'Please check your internet connection', [{
-        text: 'Try again', 
+        text: 'Try again',
         style: 'destructive',
         onPress: async () => {
           try {
@@ -166,7 +184,7 @@ export default function App() {
           });
 
           return (
-            <View style={{ width: ITEM_SIZE }}>
+            <TouchableOpacity style={{ width: ITEM_SIZE }} onPress={() => {console.log(item.title)}} delayPressIn={50}>
               <Animated.View
                 style={{
                   marginHorizontal: SPACING,
@@ -189,9 +207,17 @@ export default function App() {
                 <Text style={{ fontSize: 12, marginBottom: 5 }} numberOfLines={3}>
                   {item.description}
                 </Text>
-                <Button title="WATCH NOW" onPress={() => { console.log('asd') }} />
               </Animated.View>
-            </View>
+                {/* <View style={{height: 50}}>
+                  <BannerAd
+                    unitId={TestIds.BANNER}
+                    size={BannerAdSize.SMART_BANNER}
+                    requestOptions={{
+                      requestNonPersonalizedAdsOnly: true,
+                    }}
+                  />
+                </View> */}
+            </TouchableOpacity>
           );
         }}
       />
