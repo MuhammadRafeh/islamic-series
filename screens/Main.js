@@ -155,6 +155,10 @@ export default function Main(props) {
     return <Loading />;
   }
 
+  const onCardPress = (title) => {
+    props.navigation.navigate('Details', {title})
+  }
+
   return (
     <View style={styles.container}>
       {console.log(movies)}
@@ -194,7 +198,7 @@ export default function Main(props) {
           });
 
           return (
-            <TouchableOpacity style={{ width: ITEM_SIZE }} onPress={() => { console.log(item.title) }} delayPressIn={50}>
+            <TouchableOpacity style={{ width: ITEM_SIZE }} onPress={onCardPress.bind(null, item.title)} delayPressIn={50}>
               <Animated.View
                 style={{
                   marginHorizontal: SPACING,
