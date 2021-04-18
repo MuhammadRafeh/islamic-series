@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   StatusBar,
   Text,
@@ -9,16 +9,15 @@ import {
   Dimensions,
   Animated,
   Platform,
-  Button,
   ActivityIndicator,
   Alert,
   TouchableOpacity
 } from 'react-native';
 const { width, height } = Dimensions.get('window');
-import Genres from './Genres';
-import Rating from './Rating';
+import Genres from './components/Genres';
+import Rating from './components/Rating';
 import LinearGradient from 'react-native-linear-gradient';
-import { getSeries } from './api';
+import { getSeries } from './api/api';
 import admob, { MaxAdContentRating, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize } from '@react-native-firebase/admob';
 
 
@@ -91,10 +90,10 @@ const Backdrop = ({ movies, scrollX }) => {
 
 
 export default function App() {
-  const [movies, setMovies] = React.useState([]);
-  const [error, setError] = React.useState();
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-  React.useEffect(() => {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState();
+  const scrollX = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const movies = await getSeries();
@@ -122,7 +121,7 @@ export default function App() {
       });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (error) {
       setError(null)
       Alert.alert('Something went wrong', 'Please check your internet connection', [{
@@ -184,7 +183,7 @@ export default function App() {
           });
 
           return (
-            <TouchableOpacity style={{ width: ITEM_SIZE }} onPress={() => {console.log(item.title)}} delayPressIn={50}>
+            <TouchableOpacity style={{ width: ITEM_SIZE }} onPress={() => { console.log(item.title) }} delayPressIn={50}>
               <Animated.View
                 style={{
                   marginHorizontal: SPACING,
@@ -208,7 +207,7 @@ export default function App() {
                   {item.description}
                 </Text>
               </Animated.View>
-                {/* <View style={{height: 50}}>
+              {/* <View style={{height: 50}}>
                   <BannerAd
                     unitId={TestIds.BANNER}
                     size={BannerAdSize.SMART_BANNER}
